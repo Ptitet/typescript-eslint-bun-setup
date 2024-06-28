@@ -3,7 +3,7 @@
 1. [Create a Bun project](#creating-a-bun-project)
 2. [Install the VSCode ESLint extension](#installing-vscode-eslint-extension)
 3. [Install the dependencies](#installing-the-dependencies)
-4. [Create a `eslint.config.js` file](#creating-a-eslintconfigjs-file)
+4. [Create an `eslint.config.js` file](#creating-an-eslintconfigjs-file)
 
 ## Creating a Bun project
 
@@ -35,7 +35,7 @@ Inside your project's directory, open a console and type:
 bun i -D @eslint/js @types/eslint__js eslint typescript-eslint @stylistic/eslint-plugin
 ```
 
-## Creating a `eslint.config.js` file
+## Creating an `eslint.config.js` file
 
 At the root of your project, create a file named `eslint.config.js` with the following content:
 
