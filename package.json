@@ -2,6 +2,9 @@
     "name": "typescript-eslint-bun-setup",
     "module": "index.ts",
     "type": "module",
+    "scripts": {
+        "lint": "bunx eslint"
+    },
     "devDependencies": {
         "@eslint/js": "^9.5.0",
         "@stylistic/eslint-plugin": "^2.3.0",
