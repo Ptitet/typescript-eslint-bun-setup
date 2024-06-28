@@ -1,5 +1,5 @@
 {
-    "name": "typescript-eslint-setup",
+    "name": "typescript-eslint-bun-setup",
     "module": "index.ts",
     "type": "module",
     "devDependencies": {
