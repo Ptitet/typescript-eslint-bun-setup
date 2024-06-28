@@ -85,7 +85,21 @@ To view ESLint logs, hit `Ctrl+Shift+P` then select `ESLint: Show Output Channel
 
 To lint all your files, open a console at your project's root, then type:
 ```sh
-bunx eslint .
+bunx eslint
+```
+
+You can also setup a `package.json`'s script to do this for you:
+```jsonc
+{
+    // other props (name, description...)
+    "scripts": {
+        "lint": "bunx eslint"
+    }
+}
+```
+Then simply use:
+```sh
+bun lint
 ```
 
 ## Rules references
