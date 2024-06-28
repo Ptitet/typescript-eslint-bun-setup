@@ -1,9 +1,9 @@
-# Setting up ESLint with TypeScript and Stylistic for Bun.js projects in VSCode
+# Setting up ESLint with TypeScript and ESLint Stylistic for Bun.js projects in VSCode
 
 1. [Create a Bun project](#creating-a-bun-project)
 2. [Install the VSCode ESLint extension](#installing-vscode-eslint-extension)
 3. [Install the dependencies](#installing-the-dependencies)
-4. [Create your `eslint.config.js` file](#creating-a-eslintconfigjs-file)
+4. [Create a `eslint.config.js` file](#creating-a-eslintconfigjs-file)
 
 ## Creating a Bun project
 
@@ -15,11 +15,20 @@ This will create a `node_modules` folder, a `.gitignore` file, a `bun.lockb` fil
 
 You can edit `.gitignore`, `index.ts`, `package.json`, `README.md` and `tsconfig.json` as you want.
 
+Read more about the `bun init` command [here](https://bun.sh/docs/cli/init).
+
 ## Installing VSCode ESLint extension
 
-Open VSCode, go to the extensions tab (`Ctrl+Shift+X`), search for `ESLint` and install the extension.
+VSCode supports ESLint with [this extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+To install it, open VSCode, go to the extensions tab (`Ctrl+Shift+X`), search for `ESLint` and install the extension.
 
 ## Installing the dependencies
+
+The required dependencies are:
+- [ESLint](https://eslint.org/)
+- [TypeScript-ESLint](https://typescript-eslint.io/)
+- [ESLint Stylistic](https://eslint.style/)
 
 Inside your project's directory, open a console and type:
 ```sh
@@ -62,32 +71,25 @@ export default tseslint.config(
 );
 ```
 
-I like to keep things separated between ESLint base rules, TypeScript rules and Stylistic rules, but you can put them all in the first `rules` object if you like.
+> I like to keep things separated between ESLint base rules, TypeScript rules and Stylistic rules, but you can put them all in the first `rules` object if you like.
 
-My base rules are the following:
+You can view the rules I use in the [`eslint.config.js` file](./eslint.config.js).
 
-```js
-rules: {
-    // ESLint
-    'no-constant-condition': ['error', {
-        checkLoops: 'allExceptWhileTrue'
-    }],
-    // TypeScript
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-unnecessary-condition': ['error', {
-        allowConstantLoopConditions: true
-    }],
-    '@typescript-eslint/restrict-template-expressions': ['error', {
-        allowNumber: true
-    }]
-    // Stylistic
-    '@stylistic/member-delimiter-style': ['error', {
-        multiline: {
-            delimiter: 'semi'
-        }
-    }],
-    '@stylistic/eol-last': 'error',
-    '@stylistic/semi': 'error',
-    '@stylistic/quotes': ['error', 'single']
-}
+## Using ESLint
+
+When you edit a file, the VSCode extension should automatically add a red wavy underline if you broke a rule.
+
+Remember to restart the ESLint server if you change your config. It should restart automatically, but if it crashes, you can do it manually by hitting `Ctrl+Shift+P` then selecting `ESLint: Restart ESLint Server`.
+
+To view ESLint logs, hit `Ctrl+Shift+P` then select `ESLint: Show Output Channel`.
+
+To lint all your files, open a console at your project's root, then type:
+```sh
+bunx eslint .
 ```
+
+## Rules references
+
+- ESLint : https://eslint.org/docs/latest/rules/
+- TypeScript-ESLint : https://typescript-eslint.io/rules/#rules
+- ESLint Stylistic : https://eslint.style/packages/default#rules
