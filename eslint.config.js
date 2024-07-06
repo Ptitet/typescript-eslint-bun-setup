@@ -22,34 +22,38 @@ export default tseslint.config(
             }]
         }
     },
-    // TypeScript
-    {
+    {   // TypeScript
         rules: {
             '@typescript-eslint/no-non-null-assertion': 'off',
             '@typescript-eslint/no-unnecessary-condition': ['error', {
                 allowConstantLoopConditions: true
             }],
-            '@typescript-eslint/restrict-template-expressions': ['error', {
-                allowNumber: true
-            }],
             '@typescript-eslint/prefer-nullish-coalescing': ['error', {
                 ignorePrimitives: {
                     boolean: true
                 }
+            }],
+            '@typescript-eslint/restrict-plus-operands': ['error', {
+                allowNumberAndString: true
+            }],
+            '@typescript-eslint/restrict-template-expressions': ['error', {
+                allowNumber: true
             }]
         }
     },
-    // Stylistic
-    {
+    {   // Stylistic
         rules: {
+            '@stylistic/eol-last': 'error',
             '@stylistic/member-delimiter-style': ['error', {
                 multiline: {
                     delimiter: 'semi'
                 }
             }],
-            '@stylistic/eol-last': 'error',
-            '@stylistic/semi': 'error',
-            '@stylistic/quotes': ['error', 'single']
+            '@stylistic/no-extra-semi': 'error',
+            '@stylistic/quotes': ['error', 'single', {
+                avoidEscape: true
+            }],
+            '@stylistic/semi': 'error'
         }
     }
 );
