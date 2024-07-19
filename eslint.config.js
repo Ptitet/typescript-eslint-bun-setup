@@ -4,15 +4,22 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
     eslint.configs.recommended,
+    stylistic.configs.customize({
+        commaDangle: 'never',
+        braceStyle: '1tbs',
+        indent: 4,
+        jsx: false,
+        quoteProps: 'as-needed',
+        quotes: 'single',
+        semi: true
+    }),
     ...tseslint.configs.strictTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
     {
-        plugins: {
-            '@stylistic': stylistic
-        },
         languageOptions: {
             parserOptions: {
-                project: true
+                project: true,
+                tsconfigRootDir: import.meta.dirname
             }
         },
         // ESLint
@@ -43,6 +50,7 @@ export default tseslint.config(
     },
     {   // Stylistic
         rules: {
+            '@stylistic/arrow-parens': 'off',
             '@stylistic/eol-last': 'error',
             '@stylistic/member-delimiter-style': ['error', {
                 multiline: {
@@ -50,10 +58,12 @@ export default tseslint.config(
                 }
             }],
             '@stylistic/no-extra-semi': 'error',
+            '@stylistic/no-multi-spaces': ['error', {
+                ignoreEOLComments: true
+            }],
             '@stylistic/quotes': ['error', 'single', {
                 avoidEscape: true
-            }],
-            '@stylistic/semi': 'error'
+            }]
         }
     }
 );
