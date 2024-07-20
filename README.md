@@ -93,7 +93,7 @@ You can also setup a `package.json`'s script to do this for you:
 {
     // other props (name, description...)
     "scripts": {
-        "lint": "bunx eslint"
+        "lint": "eslint"
     }
 }
 ```
